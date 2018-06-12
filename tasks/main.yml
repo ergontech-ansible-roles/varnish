@@ -1,0 +1,25 @@
+---
+
+
+- name: Install Varnish package
+  become: yes
+  apt:
+    pkg: varnish
+    update_cache: yes
+  when: varnish_enabled
+  tags:
+    - varnish
+
+- name: Configure Varnish
+  become: yes
+  template:
+    src: "{{ item.src }}"
+    path: "{{ item.path }}"
+    mode: 0644
+  with_items:
+    - { src: default.vcl.j2, path: /etc/varnish/default.vcl }
+    - { src: vanish.j2, path: /etc/default/varnish }
+  when: varnish_enabled
+  tags:
+    - vanish
+

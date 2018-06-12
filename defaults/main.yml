@@ -1,0 +1,11 @@
+---
+
+varnish_enabled: false
+
+varnish_start_at_boot: "yes"
+varnish_max_files_open: 131072
+varnish_max_locked_memory: 82000
+
+varnish_listen_port: false
+varnish_forward_port: 8080
+varnish_forward_host: 127.0.0.1
