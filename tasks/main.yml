@@ -14,12 +14,12 @@
   become: yes
   template:
     src: "{{ item.src }}"
-    path: "{{ item.path }}"
+    dest: "{{ item.dest }}"
     mode: 0644
   with_items:
-    - { src: default.vcl.j2, path: /etc/varnish/default.vcl }
-    - { src: vanish.j2, path: /etc/default/varnish }
+    - { src: default.vcl.j2, dest: /etc/varnish/default.vcl }
+    - { src: varnish.j2, dest: /etc/default/varnish }
   when: varnish_enabled
+  notify: restart varnish
   tags:
     - vanish
-
