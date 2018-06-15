@@ -22,4 +22,4 @@
   when: varnish_enabled
   notify: restart varnish
   tags:
-    - vanish
+    - varnish
