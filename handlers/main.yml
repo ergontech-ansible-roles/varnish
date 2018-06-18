@@ -2,6 +2,7 @@
 
 - name: restart varnish
   become: yes
-  service:
+  systemd:
     name: varnish
     state: restarted
+    daemon_reloaded: yes
