@@ -10,6 +10,15 @@
   tags:
     - varnish
 
+- name: Ensure directories exist
+  become: yes
+  file:
+    path: /etc/systemd/system/varnish.service.d
+    state: directory
+    mode: 0755
+  tags:
+    - varnish
+
 - name: Configure Varnish
   become: yes
   template:
@@ -22,5 +31,14 @@
     - { src: customexec.conf.j2, dest: /etc/systemd/system/varnish.service.d/customexec.conf }
   when: varnish_enabled
   notify: restart varnish
+  tags:
+    - varnish
+
+- name: Reload Systemd Daemon and restart Varnish
+  become: yes
+  systemd:
+    name: varnish
+    state: reloaded
+    daemon_reload: yes
   tags:
     - varnish

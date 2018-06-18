@@ -5,4 +5,3 @@
   systemd:
     name: varnish
     state: restarted
-    daemon_reloaded: yes
