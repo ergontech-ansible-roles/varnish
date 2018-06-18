@@ -40,5 +40,6 @@
     name: varnish
     state: reloaded
     daemon_reload: yes
+  changed_when: false
   tags:
     - varnish
