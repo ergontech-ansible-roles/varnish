@@ -1,6 +1,5 @@
 ---
 
-
 - name: Install Varnish package
   become: yes
   apt:
@@ -30,6 +29,19 @@
     - { src: varnish.j2, dest: /etc/default/varnish }
     - { src: customexec.conf.j2, dest: /etc/systemd/system/varnish.service.d/customexec.conf }
   when: varnish_enabled
+  notify: restart varnish
+  tags:
+    - varnish
+
+- name: Extra Magento Configuration
+  become: yes
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    mode: 0644
+  with_items:
+    - { src: magento.vcl.j2, dest: /etc/varnish/magento.vcl }
+  when: varnish_enabled and varnish_configured_for_magento
   notify: restart varnish
   tags:
     - varnish

@@ -2,6 +2,8 @@
 
 varnish_enabled: true
 
+varnish_configured_for_magento: false
+
 varnish_start_at_boot: "yes"
 varnish_max_files_open: 131072
 varnish_max_locked_memory: 82000
@@ -11,3 +13,5 @@ varnish_admin_host: 0.0.0.0
 varnish_admin_port: 6082
 varnish_forward_port: 8080
 varnish_forward_host: 127.0.0.1
+varnish_acl_ips: 127.0.0.1
+varnish_vcl_file: "{{ 'magento.vcl' if varnish_configured_for_magento else 'default.vcl' }}"
