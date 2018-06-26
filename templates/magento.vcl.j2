@@ -20,7 +20,9 @@ backend default {
 }
 
 acl purge {
-    "{{ varnish_acl_ips }}";
+{% for ip in varnish_acl_ips %}
+    "{{ ip }}";
+{% endfor %}
 }
 
 sub vcl_recv {
