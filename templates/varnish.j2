@@ -46,7 +46,7 @@ INSTANCE=$(uname -n)
 #
 DAEMON_OPTS="-a :{{ varnish_listen_port }} \
              -T {{ varnish_admin_host }}:{{ varnish_admin_port }} \
-             -f /etc/varnish/default.vcl \
+             -f /etc/varnish/{{ varnish_vcl_file }} \
              -S /etc/varnish/secret \
              -s malloc,256m"
 
@@ -58,7 +58,7 @@ DAEMON_OPTS="-a :{{ varnish_listen_port }} \
 # See varnishd(1) for more information.
 #
 # # Main configuration file. You probably want to change it :)
-# VARNISH_VCL_CONF=/etc/varnish/default.vcl
+# VARNISH_VCL_CONF=/etc/varnish/{{ varnish_vcl_file }}
 #
 # # Default address and port to bind to
 # # Blank address means all IPv4 and IPv6 interfaces, otherwise specify
