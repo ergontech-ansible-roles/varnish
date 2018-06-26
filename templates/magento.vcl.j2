@@ -9,14 +9,7 @@ import std;
 backend default {
     .host = "{{ varnish_forward_host }}";
     .port = "{{ varnish_forward_port }}";
-    .first_byte_timeout = 600s;
-    .probe = {
-        .url = "/pub/health_check.php";
-        .timeout = 2s;
-        .interval = 5s;
-        .window = 10;
-        .threshold = 5;
-    }
+    .first_byte_timeout = {{ varnish_first_byte_timeout }};
 }
 
 acl purge {

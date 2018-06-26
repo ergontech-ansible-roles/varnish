@@ -7,7 +7,7 @@ varnish_configured_for_magento: false
 varnish_start_at_boot: "yes"
 varnish_max_files_open: 131072
 varnish_max_locked_memory: 82000
-
+varnish_first_byte_timeout: 600s
 varnish_listen_port: 80
 varnish_admin_host: 0.0.0.0
 varnish_admin_port: 6082
