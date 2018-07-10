@@ -14,7 +14,7 @@ backend default {
 
 acl purge {
 {% for ip in varnish_acl_ips %}
-    {{ ip }};
+    "{{ ip }}";
 {% endfor %}
 }
 
