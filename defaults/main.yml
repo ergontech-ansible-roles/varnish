@@ -6,6 +6,8 @@ varnish_configured_for_magento: false
 
 varnish_custom_config: false
 
+varnish_storage: "malloc,256m"
+
 varnish_start_at_boot: "yes"
 varnish_max_files_open: 131072
 varnish_max_locked_memory: 82000
